@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>উৎসে কর হার নির্দেশিকা · SRO ২১০/২০২৬</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EFE4;
+    --paper-2:#EAE7D8;
+    --card:#FBFAF4;
+    --ink:#1E241E;
+    --ink-soft:#5B6258;
+    --ink-faint:#8A9085;
+    --green:#0C4A37;
+    --green-deep:#06382A;
+    --green-soft:#E4EBE5;
+    --seal:#9E2B25;
+    --seal-soft:#F3E2DF;
+    --gold:#B08D3C;
+    --line:rgba(30,36,30,.12);
+    --line-strong:rgba(30,36,30,.22);
+    --shadow:0 1px 0 rgba(30,36,30,.04), 0 18px 40px -28px rgba(6,56,42,.45);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(12,74,55,.06), transparent 60%),
+      var(--paper);
+    color:var(--ink);
+    font-family:'Hind Siliguri',system-ui,sans-serif;
+    line-height:1.6;
+    font-size:16px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 80px}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    position:relative;
+    border:1px solid var(--line-strong);
+    background:var(--card);
+    border-radius:14px;
+    padding:26px 26px 22px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .masthead::before{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg,transparent 0 38px,rgba(12,74,55,.018) 38px 39px);
+    pointer-events:none;
+  }
+  .crest{
+    display:flex;align-items:center;gap:14px;
+  }
+  .crest .seal-mark{
+    flex:none;width:52px;height:52px;border-radius:50%;
+    border:2px solid var(--green);
+    display:grid;place-items:center;
+    color:var(--green);font-family:'Noto Serif Bengali',serif;font-weight:700;
+    font-size:13px;line-height:1.05;text-align:center;
+    background:
+      radial-gradient(circle at 50% 50%, transparent 58%, rgba(12,74,55,.06) 59% 100%);
+  }
+  .crest .seal-mark span{display:block;font-size:9px;letter-spacing:.04em}
+  .org{font-family:'Hind Siliguri';font-weight:600;color:var(--green);font-size:14px;letter-spacing:.01em}
+  .org small{display:block;font-weight:400;color:var(--ink-soft);font-size:12.5px}
+  h1{
+    font-family:'Noto Serif Bengali',serif;
+    font-weight:700;font-size:clamp(24px,4.5vw,34px);
+    margin:18px 0 6px;color:var(--ink);letter-spacing:-.01em;line-height:1.25;
+  }
+  .sub{color:var(--ink-soft);font-size:14.5px;margin:0}
+  .gazette-line{
+    display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;
+    padding-top:14px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--ink-soft);
+  }
+  .gazette-line b{color:var(--ink);font-weight:600}
+  .gold-rule{height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:0;border:0}
+
+  /* ---------- controls ---------- */
+  .controls{position:sticky;top:0;z-index:20;margin-top:18px;
+    background:linear-gradient(var(--paper) 70%, transparent);padding:10px 0 12px;}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tab{
+    appearance:none;border:1px solid var(--line-strong);background:var(--card);
+    color:var(--ink-soft);font-family:inherit;font-size:15px;font-weight:600;
+    padding:11px 16px;border-radius:11px;cursor:pointer;display:flex;flex-direction:column;
+    line-height:1.2;transition:.18s;flex:1 1 200px;text-align:right}
+  .tab small{font-weight:400;font-size:12px;color:var(--ink-faint)}
+  .tab:hover{border-color:var(--green)}
+  .tab[aria-selected="true"]{
+    background:var(--green);color:#fff;border-color:var(--green-deep)}
+  .tab[aria-selected="true"] small{color:rgba(255,255,255,.78)}
+  .tab:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+  .searchbar{position:relative;margin-top:10px}
+  .searchbar svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);
+    width:18px;height:18px;color:var(--ink-faint)}
+  .search{
+    width:100%;padding:13px 44px 13px 14px;border-radius:11px;
+    border:1px solid var(--line-strong);background:var(--card);color:var(--ink);
+    font-family:inherit;font-size:15.5px}
+  .search::placeholder{color:var(--ink-faint)}
+  .search:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(12,74,55,.12)}
+  .meta-row{display:flex;justify-content:space-between;align-items:baseline;
+    margin-top:8px;font-size:12.5px;color:var(--ink-faint)}
+
+  /* ---------- general notes panel ---------- */
+  .notes-card{margin-top:14px;border:1px solid var(--line);border-radius:13px;
+    background:var(--seal-soft);overflow:hidden}
+  .notes-head{display:flex;align-items:center;gap:9px;width:100%;
+    background:transparent;border:0;cursor:pointer;font-family:inherit;
+    padding:14px 16px;text-align:right;color:var(--seal);font-weight:600;font-size:14.5px}
+  .notes-head .chev{margin-right:auto;transition:.2s}
+  .notes-head[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .notes-body{padding:0 16px;max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .notes-body ul{margin:0;padding:4px 18px 16px 0;list-style:none}
+  .notes-body li{position:relative;padding:7px 0 7px 0;padding-right:18px;
+    font-size:14px;color:var(--ink);border-top:1px dashed rgba(158,43,37,.22)}
+  .notes-body li:first-child{border-top:0}
+  .notes-body li::before{content:"§";position:absolute;right:0;top:7px;color:var(--seal);font-weight:700}
+  .notes-body code{background:rgba(158,43,37,.1);padding:1px 6px;border-radius:5px;
+    font-family:'Hind Siliguri';font-size:13px;color:var(--seal)}
+
+  /* ---------- list ---------- */
+  .list{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+  .item{border:1px solid var(--line-strong);border-radius:13px;background:var(--card);
+    overflow:hidden;transition:border-color .18s, box-shadow .18s}
+  .item.open{border-color:var(--green);box-shadow:var(--shadow)}
+  .item-head{display:flex;align-items:center;gap:14px;width:100%;
+    background:transparent;border:0;cursor:pointer;font-family:inherit;
+    padding:16px 18px;text-align:right;color:var(--ink)}
+  .serial{flex:none;width:38px;height:38px;border-radius:9px;display:grid;place-items:center;
+    background:var(--green-soft);color:var(--green);font-family:'Noto Serif Bengali',serif;
+    font-weight:700;font-size:15px;border:1px solid rgba(12,74,55,.18)}
+  .item.open .serial{background:var(--green);color:#fff}
+  .head-text{flex:1;min-width:0}
+  .head-title{font-size:15.5px;font-weight:500;line-height:1.5;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .item.open .head-title{-webkit-line-clamp:unset;display:block}
+  .head-peek{font-size:12.5px;color:var(--ink-faint);margin-top:3px}
+  .rate-chip{flex:none;font-family:'Noto Serif Bengali',serif;font-weight:700;
+    color:var(--seal);font-size:17px;white-space:nowrap}
+  .rate-chip.multi{font-size:13px;color:var(--ink-faint);font-family:'Hind Siliguri';font-weight:500}
+  .chev2{flex:none;width:16px;height:16px;color:var(--ink-faint);transition:.2s}
+  .item.open .chev2{transform:rotate(180deg);color:var(--green)}
+
+  .panel{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .panel-inner{padding:4px 18px 20px;border-top:1px dashed var(--line-strong)}
+  .full-desc{font-size:14.5px;color:var(--ink);margin:14px 0 0;line-height:1.7}
+
+  /* stamps */
+  .stamps{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px;align-items:flex-start}
+  .stamp{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:118px}
+  .stamp-ring{
+    border:2.5px solid var(--seal);color:var(--seal);
+    border-radius:12px;padding:10px 18px;background:
+      repeating-linear-gradient(45deg,transparent 0 6px,rgba(158,43,37,.05) 6px 7px);
+    box-shadow:inset 0 0 0 1px rgba(158,43,37,.25);
+    transform:rotate(-2.5deg);transition:transform .2s}
+  .stamp:nth-child(even) .stamp-ring{transform:rotate(2deg)}
+  .stamp-ring .pct{font-family:'Noto Serif Bengali',serif;font-weight:700;font-size:26px;line-height:1}
+  .stamp-label{font-size:12.5px;color:var(--ink-soft);text-align:center;font-weight:500;max-width:150px}
+  .basis-tag{display:inline-flex;align-items:center;gap:5px;margin-top:2px;
+    font-size:11.5px;color:var(--green);background:var(--green-soft);
+    padding:2px 9px;border-radius:20px;font-weight:600;border:1px solid rgba(12,74,55,.18)}
+
+  .item-note{margin-top:16px;padding:12px 14px;border-right:3px solid var(--gold);
+    background:rgba(176,141,60,.08);border-radius:0 9px 9px 0;font-size:13.5px;color:var(--ink-soft)}
+  .item-note b{color:var(--ink)}
+
+  .item-ref{display:flex;align-items:flex-start;gap:7px;margin-top:16px;padding-top:13px;
+    border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink-faint);line-height:1.55}
+  .item-ref svg{flex:none;margin-top:2px;color:var(--green);opacity:.75}
+  .item-ref b{color:var(--ink-soft);font-weight:600}
+
+  .empty{text-align:center;padding:50px 20px;color:var(--ink-faint)}
+  .empty b{display:block;font-family:'Noto Serif Bengali',serif;font-size:18px;color:var(--ink-soft);margin-bottom:6px}
+
+  footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--ink-faint);line-height:1.7}
+  footer b{color:var(--ink-soft)}
+
+  mark{background:rgba(176,141,60,.35);color:inherit;border-radius:3px;padding:0 1px}
+
+  /* ---------- gross-up calculator ---------- */
+  .calc{margin-top:16px}
+  .calc-card{border:1px solid var(--line-strong);border-radius:14px;background:var(--card);
+    box-shadow:var(--shadow);padding:24px 24px 22px;position:relative;overflow:hidden}
+  .calc-card::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg,transparent 0 38px,rgba(12,74,55,.018) 38px 39px);pointer-events:none}
+  .calc-head{display:flex;align-items:center;gap:14px;position:relative}
+  .calc-badge{flex:none;width:46px;height:46px;border-radius:11px;display:grid;place-items:center;
+    background:var(--green);color:#fff;font-family:'Noto Serif Bengali',serif;font-weight:700;font-size:19px}
+  .calc-head h2{font-family:'Noto Serif Bengali',serif;font-weight:700;font-size:21px;margin:0;color:var(--ink)}
+  .calc-head p{margin:2px 0 0;font-size:13px;color:var(--ink-soft)}
+
+  .formula{margin:20px auto 4px;display:flex;align-items:center;justify-content:center;gap:12px;
+    font-family:'Noto Serif Bengali',serif;font-size:26px;color:var(--green);font-weight:600;
+    background:var(--green-soft);border:1px solid rgba(12,74,55,.18);border-radius:11px;padding:16px}
+  .frac{display:inline-flex;flex-direction:column;align-items:center;font-size:20px;line-height:1.25}
+  .frac .num{padding:0 10px 3px}
+  .frac .den{padding:3px 10px 0;border-top:2px solid var(--green)}
+  .formula-legend{text-align:center;font-size:12.5px;color:var(--ink-soft);margin:8px 4px 0}
+  .formula-legend b{color:var(--green);font-family:'Noto Serif Bengali',serif}
+
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;position:relative}
+  .field{display:flex;flex-direction:column;gap:7px}
+  .field-label{font-size:13.5px;font-weight:600;color:var(--ink)}
+  .input-wrap{display:flex;align-items:center;border:1px solid var(--line-strong);border-radius:11px;
+    background:var(--paper);overflow:hidden;transition:.15s}
+  .input-wrap:focus-within{border-color:var(--green);box-shadow:0 0 0 3px rgba(12,74,55,.12)}
+  .input-wrap input{flex:1;min-width:0;border:0;background:transparent;padding:13px 12px;
+    font-family:'Noto Serif Bengali',serif;font-size:19px;color:var(--ink);outline:none}
+  .taka{padding:0 4px 0 14px;font-family:'Noto Serif Bengali',serif;font-size:18px;color:var(--ink-faint)}
+  .pct-sign{padding:0 14px 0 4px;font-family:'Noto Serif Bengali',serif;font-size:18px;color:var(--ink-faint)}
+  .field-hint{font-size:11.5px;color:var(--ink-faint)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:1px}
+  .chip{appearance:none;border:1px solid var(--line-strong);background:var(--card);cursor:pointer;
+    font-family:'Noto Serif Bengali',serif;font-size:13px;color:var(--ink-soft);
+    padding:4px 10px;border-radius:20px;transition:.15s}
+  .chip:hover{border-color:var(--green);color:var(--green)}
+  .chip.on{background:var(--green);color:#fff;border-color:var(--green-deep)}
+  .chip:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+  .calc-hint{margin:18px 0 0;text-align:center;color:var(--ink-faint);font-size:13.5px;position:relative}
+
+  .calc-result{margin-top:18px;position:relative}
+  .res-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .res-tile{border:1px solid var(--line);border-radius:11px;background:var(--paper);padding:13px 14px;
+    display:flex;flex-direction:column;gap:6px}
+  .res-tile.accent{background:var(--seal-soft);border-color:rgba(158,43,37,.3);
+    box-shadow:inset 0 0 0 1px rgba(158,43,37,.12)}
+  .res-k{font-size:12px;color:var(--ink-soft);font-weight:500;line-height:1.35}
+  .res-v{font-family:'Noto Serif Bengali',serif;font-weight:700;font-size:21px;color:var(--ink)}
+  .res-tile.accent .res-v{color:var(--seal)}
+  .res-v::before{content:"৳ ";font-size:15px;color:var(--ink-faint);font-weight:500}
+  .res-tile.accent .res-v::before{color:rgba(158,43,37,.6)}
+  .subst{margin:14px 0 0;text-align:center;font-family:'Noto Serif Bengali',serif;font-size:14.5px;
+    color:var(--green);background:var(--green-soft);border-radius:9px;padding:10px 12px;line-height:1.7}
+
+  .calc-notes{margin-top:18px;padding:14px 16px;border-right:3px solid var(--gold);
+    background:rgba(176,141,60,.08);border-radius:0 9px 9px 0}
+  .calc-notes p{margin:0 0 8px;font-size:13px;color:var(--ink-soft);line-height:1.7}
+  .calc-notes p:last-child{margin-bottom:0}
+  .calc-notes b{color:var(--ink)}
+  .calc-ref{margin-top:10px!important;padding-top:10px;border-top:1px dashed rgba(176,141,60,.4);
+    font-size:11.5px!important;color:var(--ink-faint)!important}
+  .calc-ref b{color:var(--ink-soft)}
+
+  @media (max-width:560px){
+    .wrap{padding:16px 12px 60px}
+    .masthead{padding:20px 18px}
+    .item-head{padding:14px;gap:10px}
+    .rate-chip{font-size:15px}
+    .stamp{min-width:100px}
+    .calc-card{padding:18px 16px}
+    .calc-grid{grid-template-columns:1fr}
+    .res-tiles{grid-template-columns:1fr 1fr}
+    .formula{font-size:22px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- masthead -->
+  <header class="masthead">
+    <div class="crest">
+      <div class="seal-mark">কর<span>NBR</span></div>
+      <div class="org">জাতীয় রাজস্ব বোর্ড (আয়কর)
+        <small>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার · প্রজ্ঞাপন</small>
+      </div>
+    </div>
+    <h1>উৎসে কর হার নির্দেশিকা</h1>
+    <p class="sub">উৎসে কর বিধিমালা, ২০২৬ — সরবরাহ ও সেবার বিপরীতে উৎসে কর কর্তনের হার দেখে নিন।</p>
+    <hr class="gold-rule" style="margin-top:14px">
+    <div class="gazette-line">
+      <span>এস.আর.ও নং <b>২১০-আইন/আয়কর-১/২০২৬</b></span>
+      <span>তারিখ <b>০৮ জুন ২০২৬</b></span>
+      <span>কার্যকর <b>০১ জুলাই ২০২৬</b></span>
+      <span>আইন <b>আয়কর আইন, ২০২৩</b></span>
+    </div>
+  </header>
+
+  <!-- controls -->
+  <div class="controls">
+    <div class="tabs" role="tablist" aria-label="সারণী নির্বাচন">
+      <button class="tab" role="tab" id="tab-89" aria-selected="true" data-tab="s89">
+        সরবরাহ ও ঠিকাদার<small>ধারা ৮৯ · ২০টি ক্রমিক</small>
+      </button>
+      <button class="tab" role="tab" id="tab-90" aria-selected="false" data-tab="s90">
+        সেবা খাত<small>ধারা ৯০ · ১৯টি ক্রমিক</small>
+      </button>
+      <button class="tab" role="tab" id="tab-calc" aria-selected="false" data-tab="calc">
+        গ্রস-আপ ক্যালকুলেটর<small>ধারা ১২ · কর ব্যতীত পরিশোধ</small>
+      </button>
+    </div>
+    <div class="searchbar" id="searchbar">
+      <input class="search" id="search" type="search" placeholder="ক্যাটাগরি খুঁজুন — যেমন: সিমেন্ট, ফল, ক্যাটারিং, ইন্টারনেট…" autocomplete="off">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </div>
+    <div class="meta-row" id="metarow"><span id="count"></span><span id="tabname"></span></div>
+  </div>
+
+  <!-- general notes -->
+  <div class="notes-card" id="notescard">
+    <button class="notes-head" id="notes-toggle" aria-expanded="false">
+      এই ধারার সাধারণ শর্ত ও বিধান
+      <svg class="chev" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="notes-body" id="notes-body"><ul id="notes-list"></ul></div>
+  </div>
+
+  <!-- list -->
+  <div class="list" id="list"></div>
+
+  <!-- gross-up calculator -->
+  <section class="calc" id="calc" hidden>
+    <div class="calc-card">
+      <div class="calc-head">
+        <span class="calc-badge">১২</span>
+        <div>
+          <h2>গ্রস-আপ ক্যালকুলেটর</h2>
+          <p>কর ব্যতীত পরিশোধ এর ক্ষেত্রে গ্রস-আপ পূর্বক কর কর্তন বা সংগ্রহ — বিধি ১২</p>
+        </div>
+      </div>
+
+      <div class="formula" aria-hidden="true">
+        গ = <span class="frac"><span class="num">১০০ × ক</span><span class="den">১০০ − খ</span></span>
+      </div>
+      <p class="formula-legend">
+        <b>গ</b> = কর্তনের উদ্দেশ্যে পরিগণিত অঙ্ক (gross) · <b>ক</b> = কর ব্যতীত পরিশোধের পরিমাণ (net) · <b>খ</b> = প্রযোজ্য করহার (%)
+      </p>
+
+      <div class="calc-grid">
+        <label class="field">
+          <span class="field-label">ক — কর ব্যতীত পরিশোধ (নিট, ৳)</span>
+          <span class="input-wrap"><span class="taka">৳</span>
+            <input id="amt" type="number" inputmode="decimal" min="0" step="any" placeholder="যেমন: ১০০০০০">
+          </span>
+          <span class="field-hint">প্রাপককে কর কেটে রাখার আগেই যে পরিমাণ দেওয়ার কথা।</span>
+        </label>
+
+        <label class="field">
+          <span class="field-label">খ — প্রযোজ্য করহার (%)</span>
+          <span class="input-wrap">
+            <input id="rate" type="number" inputmode="decimal" min="0" max="99.99" step="any" placeholder="যেমন: ৫">
+            <span class="pct-sign">%</span>
+          </span>
+          <span class="chips" id="rate-chips"></span>
+        </label>
+      </div>
+
+      <p class="calc-hint" id="calc-hint">পরিশোধের পরিমাণ ও করহার দিন — ফলাফল এখানে আসবে।</p>
+
+      <div class="calc-result" id="calc-result" hidden>
+        <div class="res-tiles">
+          <div class="res-tile">
+            <span class="res-k">গ — কর্তনের ভিত্তি (gross)</span>
+            <span class="res-v" id="r-gross"></span>
+          </div>
+          <div class="res-tile accent">
+            <span class="res-k">কর্তনযোগ্য কর (TDS)</span>
+            <span class="res-v" id="r-tax"></span>
+          </div>
+          <div class="res-tile">
+            <span class="res-k">প্রাপক হাতে পাবেন</span>
+            <span class="res-v" id="r-net"></span>
+          </div>
+          <div class="res-tile">
+            <span class="res-k">পরিশোধকারীর মোট দায়</span>
+            <span class="res-v" id="r-total"></span>
+          </div>
+        </div>
+        <p class="subst" id="r-subst"></p>
+      </div>
+
+      <div class="calc-notes">
+        <p><b>উপ-বিধি (২):</b> প্রাপক যদি রিটার্ন দাখিলের প্রমাণ উপস্থাপনে বাধ্য হয়েও ব্যর্থ হন, অথবা ব্যাংক ট্রান্সফারের মাধ্যমে পরিশোধ গ্রহণে ব্যর্থ হন — তাহলে “খ” (করহার) আইনের অংশ ৭ এর বিধান অনুযায়ী (সাধারণত বর্ধিত হারে) নির্ধারিত হবে। সে ক্ষেত্রে ঐ বর্ধিত হারটি উপরে বসান।</p>
+        <p><b>উপ-বিধি (৩):</b> “কর ব্যতীত পরিশোধ” অর্থ কোনো চুক্তি বা বন্দোবস্তের আওতায় উৎসে কর কর্তন বা সংগ্রহ ব্যতিরেকে পরিশোধকারী কর্তৃক প্রাপকের বরাবর কোনো পরিশোধ।</p>
+        <p class="calc-ref">সূত্র: <b>এস.আর.ও নং ২১০-আইন/আয়কর-১/২০২৬</b> · বিধি ১২ · উৎসে কর বিধিমালা, ২০২৬ · আয়কর আইন, ২০২৩।</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b>উৎস:</b> এস.আর.ও নং ২১০-আইন/আয়কর-১/২০২৬ (০৮ জুন ২০২৬), আয়কর আইন, ২০২৩ এর ধারা ৩৪৩ এর ক্ষমতাবলে প্রণীত উৎসে কর বিধিমালা, ২০২৬।
+    এই টুলটি কেবল দ্রুত রেফারেন্সের জন্য; এটি আইনি বা কর-পরামর্শ নয়। প্রকৃত হার ও প্রয়োগের জন্য মূল প্রজ্ঞাপন দেখুন এবং প্রয়োজনে আয়কর পেশাজীবীর সঙ্গে পরামর্শ করুন।
+    <br>অনিবাসীর আয় হইতে কর কর্তন (ধারা ১১৯) সংক্রান্ত সারণী এই টুলে অন্তর্ভুক্ত নয়।
+  </footer>
+</div>
+
+<script>
+const DATA = {
+  s89: {
+    name: "ধারা ৮৯ — ঠিকাদার ইত্যাদির পরিশোধের বিপরীতে",
+    rule: "৩", dhara: "৮৯",
+    defaultBasis: "ভিত্তিমূল্যের উপর",
+    notes: [
+      "<b>প্রযোজ্য নয়:</b> পেট্রোল পাম্প বা সিএনজি স্টেশন কর্তৃক তেল বা গ্যাস সরবরাহের ক্ষেত্রে উৎসে কর কর্তন প্রযোজ্য হইবে না।",
+      "<b>আমদানিকৃত পণ্য (উপ-বিধি ২):</b> ধারা ১২০ এর অধীন কর পরিশোধিত আমদানিকৃত পণ্য সরবরাহে কর্তনের পরিমাণ <code>(খ − ক)</code>; এখানে ক = ১২০ ধারায় পরিশোধিত কর, খ = ১২০ ধারায় উৎসে কর পরিশোধিত না থাকলে ৮৯ ধারায় যে কর কর্তন হতো।",
+      "<b>ধারা ৯৪ এর পণ্য (উপ-বিধি ৩):</b> ৯৪ ধারায় উৎসে কর পরিশোধিত পণ্য সরবরাহে কর্তন <code>(খ − ক)</code>; ক = ৯৪ ধারায় পরিশোধিত কর। ডিস্ট্রিবিউটর বা অন্য ব্যক্তির ক্ষেত্রে খ = <code>{কোম্পানির পণ্যের বিক্রয়মূল্য × ৫% × ১০%}</code>।",
+      "<b>অব্যাহতি/হ্রাসকৃত হার (উপ-বিধি ৪):</b> প্রাপকের আয় করমুক্ত বা হ্রাসকৃত হারে করারোপযোগ্য হলে প্রাপকের আবেদনে বোর্ড যাচাই সাপেক্ষে সনদ দিতে পারবে — তখন কর্তন ব্যতিরেকে বা হ্রাসকৃত হারে কর্তন হবে।"
+    ],
+    items: [
+      {n:"১", t:"এমএস বিলেট উৎপাদনে নিয়োজিত শিল্প প্রতিষ্ঠান এবং স্থানীয়ভাবে ক্রয়কৃত এমএস স্ক্র্যাপ (MS billet manufacturing industry & locally purchased MS scrap)", rates:[{r:"০.৫%"}]},
+      {n:"২", t:"পেট্রোলিয়াম তেল ও লুব্রিকেন্ট বিপণনে নিযুক্ত তেল বিপণন কোম্পানি কর্তৃক তেল সরবরাহ (Oil supply by oil marketing company)", rates:[{r:"০.৬%"}]},
+      {n:"৩", t:"পেট্রোলিয়াম তেল বিপণন কোম্পানির ডিলার বা এজেন্ট কর্তৃক তেল সরবরাহ (Oil supply by dealer/agent of oil marketing company)", rates:[{r:"১%"}]},
+      {n:"৪", t:"কৃষি ও খাদ্যপণ্য সরবরাহ (চাল, গম, ডাল, সবজি, মাছ-মাংস, ভোজ্যতেল, চিনি ইত্যাদি) (Agricultural & food products supply — rice, wheat, pulses, vegetables, fish, meat, edible oil, sugar etc.)",
+        full:"ধান, ধানের কুঁড়া, চাল, পুষ্টি চালের কার্নেল, গম, আলু, গবাদি পশু, গবাদি পশুর খাদ্য, হাঁস-মুরগি, মাছ, মাংস, পেঁয়াজ, রসুন, মটর, ছোলা, মসুর, আদা, হলুদ, শুকনা মরিচ, ডাল, ভুট্টা, আটা, ময়দা, লবণ, ভোজ্যতেল, চিনি, বীজ, পাট, পাটকাঠি, তুলা, সরিষা, তিল, কাঁচা চা-পাতা, গোলমরিচ, এলাচ, দারুচিনি, লবঙ্গ, তেজপাতা, ডিম, শাকসবজি, লেবু, কাঁচামরিচ, তরল দুধ, স-মিলের ভুসি, পোলট্রি ফিড, পিলেটেড পোলট্রি ফিড, মাশরুম, মধু, গুড়, তামাক ব্যতীত অন্যান্য গাছের পাতা ও বাকল, লতা-পাতা, চিটাগুড়, খইল, সয়াবিন মিল, ডি-ও-আর-বি (De-oiled Rice Bran), কাঁচা চামড়া, জৈব সার, জৈব কীটনাশক বা বালাইনাশক সরবরাহের ক্ষেত্রে।",
+        rates:[{r:"০.৫%"}]},
+      {n:"৫", t:"স্বর্ণ, রৌপ্য, স্বর্ণালংকার, রত্ন-হীরক সরবরাহ (Gold, silver, jewellery, gems & diamonds supply)", rates:[{r:"০.৫%"}]},
+      {n:"৬", t:"সুতা সরবরাহ (Yarn supply)", rates:[{r:"১%"}]},
+      {n:"৭", t:"সব ধরনের ফল সরবরাহ (All kinds of fruit supply)", rates:[{r:"২%"}]},
+      {n:"৮", t:"শতভাগ রপ্তানিমুখী গার্মেন্টস শিল্প কর্তৃক প্রদত্ত সাব-কন্ট্রাক্ট (Sub-contract by 100% export-oriented garments industry)", rates:[{r:"১%"}]},
+      {n:"৯", t:"এমএস বিলেট ব্যতীত সিমেন্ট, লৌহ বা লৌহ পণ্য, ফেরো অ্যালয় পণ্য সরবরাহ (Cement, iron/iron products, ferro-alloy products supply — except MS billet)", rates:[{r:"২%"}]},
+      {n:"১০", t:"তেলশোধন (oil refinery) কার্যক্রমে নিযুক্ত কোম্পানি কর্তৃক তেল সরবরাহ (Oil supply by oil refinery company)", rates:[{r:"১%"}]},
+      {n:"১১", t:"গ্যাস ট্রান্সমিশনে নিয়োজিত কোম্পানি (Gas transmission company)", rates:[{r:"৩%"}]},
+      {n:"১২", t:"গ্যাস বিতরণে নিযুক্ত কোম্পানি (Gas distribution company)", rates:[{r:"০.৬%"}]},
+      {n:"১৩", t:"৩৩ কেভি–৫০০ কেভি Extra High Voltage Power Cable সরবরাহ (নিজস্ব VCV line সম্পন্ন কোম্পানি) (33kV–500kV Extra High Voltage Power Cable supply by company with own VCV line)",
+        full:"স্থানীয় পর্যায়ে নিজস্ব Vertical Continuous Vulcanization (VCV) line রয়েছে এইরূপ কোম্পানি কর্তৃক তৈয়ারকৃত ৩৩ কেভি হইতে ৫০০ কেভি Extra High Voltage Power Cable সরবরাহের ক্ষেত্রে।",
+        rates:[{r:"৩%"}]},
+      {n:"১৪", t:"সরকারি সংস্থা ব্যতীত অন্য কোনো ব্যক্তিকে বই সরবরাহ (Book supply to persons other than government bodies)",
+        full:"সরকার, সরকারের কোনো কর্তৃপক্ষ, কর্পোরেশন বা সরকারের সংস্থা এবং এর সকল সংযুক্ত ও অধীনস্থ অফিস ব্যতীত অন্য কোনো ব্যক্তিকে বই সরবরাহের ক্ষেত্রে।",
+        rates:[{r:"৩%"}]},
+      {n:"১৫", t:"রিসাইকেলযোগ্য পণ্য সরবরাহ (প্লাস্টিক, পলিথিন, ব্যাটারি, সিসা, কাগজ, কাঁচ ইত্যাদি) (Recyclable goods supply — plastic, polythene, battery, lead, paper, glass etc.)",
+        full:"রিসাইকেল্ড- প্লাস্টিক, পলিথিন, ব্যাটারি, সিসা, ইলেকট্রিক্যাল, ইলেকট্রনিক্স, কাগজ, কাঁচসহ রিসাইকেলযোগ্য সকল পণ্য সরবরাহের ক্ষেত্রে।",
+        rates:[{r:"১%"}]},
+      {n:"১৬", t:"রিসাইক্লিং শিল্পে ব্যবহৃত কাঁচামাল সরবরাহ (Raw materials used in recycling industry)", rates:[{r:"১%"}]},
+      {n:"১৭", t:"শিল্পোৎপাদনে ব্যবহৃত কাঁচামাল ও প্যাকিং ম্যাটেরিয়াল সরবরাহ (Industrial raw materials & packing materials supply)", rates:[{r:"৩%"}]},
+      {n:"১৮", t:"ম্যানুফ্যাকচারিং, প্রসেস/কনভারশন, পূর্তকাজ, নির্মাণ, প্রকৌশল বা সমজাতীয় কাজ (Manufacturing, process/conversion, civil works, construction, engineering or similar work)", rates:[{r:"৫%"}]},
+      {n:"১৯", t:"সিগারেট, বিড়ি, জর্দা ও গুল শিল্পে তামাকজাত কাঁচামাল সরবরাহ (Tobacco raw materials for cigarette, bidi, zarda & gul industry)", rates:[{r:"১০%"}]},
+      {n:"২০", t:"উপরের ১–১৯ এ বর্ণিত নয় এমন সকল পণ্য সরবরাহ ও ধারা ৮৯ এর অন্যান্য সকল ক্ষেত্রে (All other goods supply & all other cases under section 89 — residual rate)",
+        full:"(ক) সারণীর ক্রমিক ১ হইতে ১৯ এ বর্ণিত হয় নাই এমন সকল পণ্য সরবরাহের ক্ষেত্রে; (খ) ধারা ৮৯ এ উল্লিখিত অন্যান্য সকল ক্ষেত্রে।",
+        rates:[{r:"৫%"}], note:"এটি সাধারণ/অবশিষ্ট হার (residual rate) — নির্দিষ্ট ক্রমিকে না পড়লে এই হার প্রযোজ্য।"}
+    ]
+  },
+
+  s90: {
+    name: "ধারা ৯০ — সেবার বিপরীতে পরিশোধ",
+    rule: "৪", dhara: "৯০",
+    defaultBasis: null,
+    notes: [
+      "<b>প্রযোজ্য নয়:</b> ক্রমিক ১ হইতে ১৮ এ বর্ণিত ক্ষেত্র ব্যতীত অন্য কোনো সেবা যদি কোনো ব্যাংক, ইন্স্যুরেন্স, আর্থিক প্রতিষ্ঠান বা মোবাইল ফাইন্যান্সিয়াল সেবা (MFS) প্রদানকারী প্রতিষ্ঠান কর্তৃক প্রদত্ত হয়, তবে এই বিধির অধীন কর কর্তন প্রযোজ্য হইবে না।",
+      "<b>অব্যাহতি/হ্রাসকৃত হার (উপ-বিধি ২):</b> প্রাপকের আয় করমুক্ত বা হ্রাসকৃত হারে করারোপযোগ্য হলে প্রাপকের আবেদনে বোর্ড যাচাই সাপেক্ষে সনদ দিতে পারবে — তখন কর্তন ব্যতিরেকে বা হ্রাসকৃত হারে কর্তন হবে।",
+      "<b>‘স্বাভাবিক ব্যক্তি’</b> অর্থ স্বতন্ত্র ব্যক্তি (individual); ‘অন্যান্য ব্যক্তি’ অর্থ কোম্পানি/ফার্ম ইত্যাদি।"
+    ],
+    items: [
+      {n:"১", t:"উপদেষ্টা বা পরামর্শক ফি (Advisory or consultancy fee)", rates:[
+        {label:"স্বাভাবিক ব্যক্তি", r:"১৫%"},
+        {label:"স্বাভাবিক ব্যক্তি ব্যতীত অন্যান্য", r:"৭.৫%"}]},
+      {n:"২", t:"পেশাদার সেবা (professional service) ফি (Professional service fee)", rates:[
+        {label:"স্বাভাবিক ব্যক্তি", r:"১৫%"},
+        {label:"স্বাভাবিক ব্যক্তি ব্যতীত অন্যান্য", r:"৭.৫%"}]},
+      {n:"৩", t:"কারিগরি সেবা ফি / কারিগরি সহায়তা ফি (technical service / know-how / assistance fee) (Technical service / know-how / assistance fee)", rates:[
+        {label:"স্বাভাবিক ব্যক্তি", r:"১৫%"},
+        {label:"স্বাভাবিক ব্যক্তি ব্যতীত অন্যান্য", r:"১০%"}]},
+      {n:"৪", t:"ক্লিনিং, ব্যক্তিগত নিরাপত্তা, জনবল সরবরাহ (Cleaning, personal security, manpower supply)", rates:[
+        {label:"কমিশন এর উপর", r:"১০%"},
+        {label:"মোট বিল এর উপর", r:"১%"}]},
+      {n:"৫", t:"ক্যাটারিং, ক্রিয়েটিভ মিডিয়া, জনসংযোগ, ইভেন্ট, প্রশিক্ষণ/কর্মশালা, কুরিয়ার, প্যাকিং-শিফটিং ইত্যাদি (Catering, creative media, PR, event management, training/workshop, courier, packing & shifting etc.)",
+        full:"(ক) ক্যাটারিং (খ) ক্রিয়েটিভ মিডিয়া (গ) জনসংযোগ (ঘ) ইভেন্ট পরিচালনা (ঙ) প্রশিক্ষণ, কর্মশালা ইত্যাদি পরিচালনা (চ) কুরিয়ার সার্ভিস (ছ) প্যাকিং ও শিফটিং (জ) সংগ্রহ ও পুনরুদ্ধার এজেন্সি (ঝ) প্রিন্ট ও ইলেকট্রনিক মিডিয়া এজেন্সি সেবা (ঞ) একই প্রকৃতির অন্যান্য সেবা।",
+        rates:[{label:"মোট বিল এর উপর", r:"৪%"}]},
+      {n:"৬", t:"ইন্ডেন্টিং (Indenting)", rates:[{label:"কমিশন এর উপর", r:"৭.৫%"}]},
+      {n:"৭", t:"মিটিং ফি, ট্রেনিং ফি বা সম্মানী (Meeting fee, training fee or honorarium)", rates:[{label:"বিল এর উপর", r:"২০%"}]},
+      {n:"৮", t:"মোবাইল নেটওয়ার্ক অপারেটর কর্তৃক প্রদত্ত সেবা (Services by mobile network operator)", rates:[{label:"বিল এর উপর", r:"১০%"}]},
+      {n:"৯", t:"ক্রেডিট রেটিং এজেন্সি (Credit rating agency)", rates:[{label:"বিল এর উপর", r:"১০%"}]},
+      {n:"১০", t:"মোটর গ্যারেজ বা ওয়ার্কশপ (Motor garage or workshop)", rates:[{label:"বিল এর উপর", r:"৫%"}]},
+      {n:"১১", t:"ব্যক্তিগত কন্টেইনার পোর্ট বা ডকইয়ার্ড (Private container port or dockyard)", rates:[{label:"বিল এর উপর", r:"৫%"}]},
+      {n:"১২", t:"শিপিং এজেন্সি (Shipping agency)", rates:[
+        {label:"কমিশন এর উপর", r:"১০%"},
+        {label:"মোট বিল এর উপর", r:"১%"}]},
+      {n:"১৩", t:"স্টিভেডোরিং / বার্থ অপারেটর / টার্মিনাল অপারেটর / শিপ হ্যান্ডলিং অপারেটর (Stevedoring / berth operator / terminal operator / ship handling operator)", rates:[
+        {label:"কমিশন এর উপর", r:"১০%"},
+        {label:"মোট বিল এর উপর", r:"৫%"}]},
+      {n:"১৪", t:"পরিবহন, গাড়ি ভাড়া, ক্যারিয়িং, মেরামত-রক্ষণাবেক্ষণ এবং রাইড শেয়ারিং/শেয়ারিং ইকোনমি প্ল্যাটফর্ম সেবা (Transport, car rental, carrying, repair & maintenance, ride sharing / sharing economy platform services)",
+        full:"(১) পরিবহন সেবা, গাড়ি ভাড়া, ক্যারিয়িং সেবা এবং মেরামত ও রক্ষণাবেক্ষণ সেবা; (২) রাইড শেয়ারিং সেবা, ওয়ার্কিং স্পেস সরবরাহ সেবা, আবাসন সরবরাহ সেবাসহ যেকোনো প্রকার শেয়ারিং ইকোনমিক প্ল্যাটফর্ম সেবার মোট বিলের উপর।",
+        rates:[{label:"মোট বিল এর উপর", r:"২%"}]},
+      {n:"১৫", t:"বিদ্যুৎ সঞ্চালনার নিমিত্ত হুইলিং চার্জ (Wheeling charge for electricity transmission)", rates:[{label:"মোট বিল এর উপর", r:"৩%"}]},
+      {n:"১৬", t:"ইন্টারনেট সেবা (Internet service)", rates:[{label:"বিল এর উপর", r:"৫%"}]},
+      {n:"১৭", t:"MFS প্রতিষ্ঠানের এজেন্ট, ডিস্ট্রিবিউটর, এজেন্সি বা চ্যানেল পার্টনার (যে নামেই অভিহিত হউক) (Agent, distributor, agency or channel partner of MFS provider)",
+        rates:[{label:"কমিশন এর উপর", r:"১০%"}]},
+      {n:"১৮", t:"ফ্রেইট ফরওয়ার্ড (কমিশনসহ বা কমিশন ব্যতিরেকে গ্রস বিল) (Freight forward — gross bill with or without commission)", rates:[
+        {label:"কমিশন এর উপর", r:"১০%"},
+        {label:"মোট বিল এর উপর", r:"১%"}]},
+      {n:"১৯", t:"উপরের ১–১৮ এ বর্ণিত নয় এবং আইনের অন্য ধারায় কর্তনযোগ্য নয় এমন অন্য কোনো সেবা (Any other service not listed in 1–18 and not deductible under another section — residual rate)",
+        rates:[{label:"বিল এর উপর", r:"১০%"}], note:"সাধারণ/অবশিষ্ট সেবা হার। তবে ব্যাংক/ইন্স্যুরেন্স/আর্থিক প্রতিষ্ঠান/MFS এর সেবার ক্ষেত্রে উপরের শর্ত দেখুন।"}
+    ]
+  }
+};
+
+let current = "s89";
+const $ = s => document.querySelector(s);
+const listEl = $("#list");
+
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function highlight(text, q){
+  if(!q) return esc(text);
+  const i = text.toLowerCase().indexOf(q.toLowerCase());
+  if(i<0) return esc(text);
+  return esc(text.slice(0,i))+"<mark>"+esc(text.slice(i,i+q.length))+"</mark>"+esc(text.slice(i+q.length));
+}
+
+function rateChip(item){
+  if(item.rates.length===1 && !item.rates[0].label) return `<span class="rate-chip">${item.rates[0].r}</span>`;
+  if(item.rates.length===1) return `<span class="rate-chip">${item.rates[0].r}</span>`;
+  const lo = item.rates.map(x=>x.r);
+  return `<span class="rate-chip">${lo.join(" / ")}</span>`;
+}
+
+function renderNotes(){
+  const sec = DATA[current];
+  $("#notes-list").innerHTML = sec.notes.map(n=>`<li>${n}</li>`).join("");
+}
+
+function render(q=""){
+  const sec = DATA[current];
+  const query = q.trim();
+  const items = sec.items.filter(it=>{
+    if(!query) return true;
+    const hay = (it.t+" "+(it.full||"")).toLowerCase();
+    return hay.includes(query.toLowerCase());
+  });
+
+  $("#tabname").textContent = sec.name;
+  $("#count").textContent = query
+    ? `${toBn(items.length)} টি ফলাফল`
+    : `${toBn(sec.items.length)} টি ক্যাটাগরি`;
+
+  if(items.length===0){
+    listEl.innerHTML = `<div class="empty"><b>কিছু পাওয়া যায়নি</b>“${esc(query)}” এর জন্য কোনো ক্যাটাগরি মেলেনি। অন্য শব্দ দিয়ে খুঁজে দেখুন।</div>`;
+    return;
+  }
+
+  listEl.innerHTML = items.map(it=>{
+    const basis = sec.defaultBasis;
+    const stamps = it.rates.map(rt=>`
+      <div class="stamp">
+        <div class="stamp-ring"><span class="pct">${rt.r}</span></div>
+        ${rt.label?`<div class="stamp-label">${rt.label}</div>`
+                  :(basis?`<div class="stamp-label">${basis}</div>`:"")}
+      </div>`).join("");
+    const desc = it.full ? `<p class="full-desc">${highlight(it.full, query)}</p>` : "";
+    const itemNote = it.note ? `<div class="item-note">${it.note}</div>` : "";
+    const ref = `<div class="item-ref">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span>সূত্র: <b>এস.আর.ও নং ২১০-আইন/আয়কর-১/২০২৬</b> · বিধি ${sec.rule} · সারণী ক্রমিক ${it.n} · ধারা ${sec.dhara}, আয়কর আইন ২০২৩</span>
+      </div>`;
+    const peek = it.rates.length>1 ? `${toBn(it.rates.length)} টি ভিত্তি/শ্রেণি` : (basis||"");
+    return `
+    <div class="item" data-n="${it.n}">
+      <button class="item-head" aria-expanded="false">
+        <span class="serial">${it.n}</span>
+        <span class="head-text">
+          <span class="head-title">${highlight(it.t, query)}</span>
+          ${peek?`<span class="head-peek">${peek}</span>`:""}
+        </span>
+        ${rateChip(it)}
+        <svg class="chev2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="panel">
+        <div class="panel-inner">
+          ${desc}
+          <div class="stamps">${stamps}</div>
+          ${itemNote}
+          ${ref}
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+
+  // auto-open the only result
+  if(query && items.length===1){
+    const only = listEl.querySelector(".item");
+    openItem(only, true);
+  }
+}
+
+function openItem(item, open){
+  const head = item.querySelector(".item-head");
+  const panel = item.querySelector(".panel");
+  if(open){
+    item.classList.add("open");
+    head.setAttribute("aria-expanded","true");
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }else{
+    item.classList.remove("open");
+    head.setAttribute("aria-expanded","false");
+    panel.style.maxHeight = "0px";
+  }
+}
+
+function toBn(num){
+  const map={'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+  return String(num).replace(/[0-9]/g,d=>map[d]);
+}
+
+// events
+listEl.addEventListener("click", e=>{
+  const head = e.target.closest(".item-head");
+  if(!head) return;
+  const item = head.closest(".item");
+  const isOpen = item.classList.contains("open");
+  // close siblings
+  listEl.querySelectorAll(".item.open").forEach(o=>{ if(o!==item) openItem(o,false); });
+  openItem(item, !isOpen);
+});
+
+function setTab(tab){
+  document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected", x.dataset.tab===tab?"true":"false"));
+  const isCalc = (tab==="calc");
+  ["searchbar","metarow","notescard","list"].forEach(id=>{ $("#"+id).hidden = isCalc; });
+  $("#calc").hidden = !isCalc;
+  if(!isCalc){
+    current = tab;
+    $("#search").value = "";
+    renderNotes();
+    render();
+  }
+}
+document.querySelectorAll(".tab").forEach(t=>{
+  t.addEventListener("click", ()=>setTab(t.dataset.tab));
+});
+
+$("#search").addEventListener("input", e=>render(e.target.value));
+
+const nt = $("#notes-toggle"), nb = $("#notes-body");
+nt.addEventListener("click", ()=>{
+  const open = nt.getAttribute("aria-expanded")==="true";
+  nt.setAttribute("aria-expanded", String(!open));
+  nb.style.maxHeight = open ? "0px" : nb.scrollHeight + "px";
+});
+
+/* ---------- gross-up calculator ---------- */
+const PRESET_RATES = [0.5,0.6,1,2,3,4,5,7.5,10,15,20];
+const amtEl = $("#amt"), rateEl = $("#rate");
+
+function money(n){
+  return toBn(Number(n).toLocaleString('en-IN',{minimumFractionDigits:2, maximumFractionDigits:2}));
+}
+function bnNum(n){ return toBn(String(n)); }
+
+$("#rate-chips").innerHTML = PRESET_RATES.map(r=>
+  `<button type="button" class="chip" data-r="${r}">${bnNum(r)}%</button>`).join("");
+$("#rate-chips").addEventListener("click", e=>{
+  const c = e.target.closest(".chip"); if(!c) return;
+  rateEl.value = c.dataset.r;
+  runCalc();
+});
+
+function runCalc(){
+  const a = parseFloat(amtEl.value);
+  const b = parseFloat(rateEl.value);
+  const result = $("#calc-result"), hint = $("#calc-hint");
+
+  // sync active chip
+  document.querySelectorAll("#rate-chips .chip").forEach(c=>
+    c.classList.toggle("on", parseFloat(c.dataset.r)===b));
+
+  if(!(a>0) || isNaN(b)){
+    result.hidden = true; hint.hidden = false;
+    hint.textContent = "পরিশোধের পরিমাণ ও করহার দিন — ফলাফল এখানে আসবে।";
+    return;
+  }
+  if(b<0 || b>=100){
+    result.hidden = true; hint.hidden = false;
+    hint.textContent = "করহার (খ) অবশ্যই ০ থেকে ১০০ এর মধ্যে হতে হবে।";
+    return;
+  }
+
+  const gross = (100*a)/(100-b);
+  const tax = gross - a;            // = gross × b/100
+
+  hint.hidden = true;
+  result.hidden = false;
+  $("#r-gross").textContent = money(gross);
+  $("#r-tax").textContent   = money(tax);
+  $("#r-net").textContent   = money(a);
+  $("#r-total").textContent = money(gross);
+  $("#r-subst").innerHTML =
+    `গ = (১০০ × ${money(a)}) ÷ (১০০ − ${bnNum(b)}) = <b>৳ ${money(gross)}</b> &nbsp;·&nbsp; কর = ৳ ${money(tax)}`;
+}
+amtEl.addEventListener("input", runCalc);
+rateEl.addEventListener("input", runCalc);
+
+// init
+renderNotes();
+render();
+</script>
+</body>
+</html>
