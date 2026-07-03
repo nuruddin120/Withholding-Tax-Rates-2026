@@ -91,8 +91,8 @@
     appearance:none;border:1px solid var(--line-strong);background:var(--card);
     color:var(--ink-soft);font-family:inherit;font-size:15px;font-weight:600;
     padding:11px 16px;border-radius:11px;cursor:pointer;display:flex;flex-direction:column;
-    line-height:1.2;transition:.18s;flex:1 1 200px;text-align:right}
-  .tab small{font-weight:400;font-size:12px;color:var(--ink-faint)}
+    line-height:1.2;transition:.18s;flex:1 1 140px;text-align:right}
+  .tab small{font-weight:400;font-size:11.5px;color:var(--ink-faint)}
   .tab:hover{border-color:var(--green)}
   .tab[aria-selected="true"]{
     background:var(--green);color:#fff;border-color:var(--green-deep)}
@@ -136,9 +136,10 @@
   .item-head{display:flex;align-items:center;gap:14px;width:100%;
     background:transparent;border:0;cursor:pointer;font-family:inherit;
     padding:16px 18px;text-align:right;color:var(--ink)}
-  .serial{flex:none;width:38px;height:38px;border-radius:9px;display:grid;place-items:center;
+  .serial{flex:none;width:auto;min-width:38px;height:38px;padding:0 8px;border-radius:9px;
+    display:grid;place-items:center;
     background:var(--green-soft);color:var(--green);font-family:'Noto Serif Bengali',serif;
-    font-weight:700;font-size:15px;border:1px solid rgba(12,74,55,.18)}
+    font-weight:700;font-size:15px;border:1px solid rgba(12,74,55,.18);white-space:nowrap}
   .item.open .serial{background:var(--green);color:#fff}
   .head-text{flex:1;min-width:0}
   .head-title{font-size:15.5px;font-weight:500;line-height:1.5;
@@ -148,6 +149,7 @@
   .rate-chip{flex:none;font-family:'Noto Serif Bengali',serif;font-weight:700;
     color:var(--seal);font-size:17px;white-space:nowrap}
   .rate-chip.multi{font-size:13px;color:var(--ink-faint);font-family:'Hind Siliguri';font-weight:500}
+  .rate-chip.amt{font-size:13.5px;font-family:'Hind Siliguri';font-weight:600;white-space:normal;text-align:left;max-width:118px}
   .chev2{flex:none;width:16px;height:16px;color:var(--ink-faint);transition:.2s}
   .item.open .chev2{transform:rotate(180deg);color:var(--green)}
 
@@ -166,6 +168,8 @@
     transform:rotate(-2.5deg);transition:transform .2s}
   .stamp:nth-child(even) .stamp-ring{transform:rotate(2deg)}
   .stamp-ring .pct{font-family:'Noto Serif Bengali',serif;font-weight:700;font-size:26px;line-height:1}
+  .stamp-ring.txt{padding:9px 14px}
+  .stamp-ring.txt .pct{font-family:'Hind Siliguri';font-size:15px;line-height:1.25;text-align:center}
   .stamp-label{font-size:12.5px;color:var(--ink-soft);text-align:center;font-weight:500;max-width:150px}
   .basis-tag{display:inline-flex;align-items:center;gap:5px;margin-top:2px;
     font-size:11.5px;color:var(--green);background:var(--green-soft);
@@ -298,6 +302,12 @@
       </button>
       <button class="tab" role="tab" id="tab-90" aria-selected="false" data-tab="s90">
         সেবা খাত<small>ধারা ৯০ · ১৯টি ক্রমিক</small>
+      </button>
+      <button class="tab" role="tab" id="tab-other" aria-selected="false" data-tab="s_other">
+        অন্যান্য ধারা<small>ধারা ৮৬–১৩৯</small>
+      </button>
+      <button class="tab" role="tab" id="tab-119" aria-selected="false" data-tab="s119">
+        অনিবাসী<small>ধারা ১১৯ · ৩০টি</small>
       </button>
       <button class="tab" role="tab" id="tab-calc" aria-selected="false" data-tab="calc">
         গ্রস-আপ ক্যালকুলেটর<small>ধারা ১২ · কর ব্যতীত পরিশোধ</small>
@@ -494,6 +504,208 @@ const DATA = {
       {n:"১৯", t:"উপরের ১–১৮ এ বর্ণিত নয় এবং আইনের অন্য ধারায় কর্তনযোগ্য নয় এমন অন্য কোনো সেবা (Any other service not listed in 1–18 and not deductible under another section — residual rate)",
         rates:[{label:"বিল এর উপর", r:"১০%"}], note:"সাধারণ/অবশিষ্ট সেবা হার। তবে ব্যাংক/ইন্স্যুরেন্স/আর্থিক প্রতিষ্ঠান/MFS এর সেবার ক্ষেত্রে উপরের শর্ত দেখুন।"}
     ]
+  },
+
+  s_other: {
+    name: "অন্যান্য উৎসে কর (ধারা ৮৬–১৩৯)",
+    refType: "section",
+    defaultBasis: null,
+    notes: [
+      "<b>উৎস:</b> ‘উৎসে আয়কর কর্তন এর রেট বা অংকসমূহ’ (আয়কর আইন ২০২৩; জুন ২০২৬ পর্যন্ত হালনাগাদ) — সমীর চন্দ্র সূত্রধর। ধারা ৮৯ ও ৯০ আলাদা ট্যাবে বিস্তারিত দেওয়া আছে।",
+      "<b>সনদভিত্তিক অব্যাহতি:</b> অনেক ধারায় প্রাপক করমুক্ত/হ্রাসকৃত হারে করযোগ্য হলে এবং বোর্ড/উপকর কমিশনারের সনদ থাকলে ০% বা হ্রাসকৃত হারে কর্তন হয়।",
+      "নির্দিষ্ট অঙ্কের (টাকা) হারগুলো সাধারণত নিবন্ধন/নবায়ন/লাইসেন্সের সময় প্রযোজ্য অগ্রিম কর।"
+    ],
+    items: [
+      {n:"৮৬", t:"চাকরি/বেতন আয় হইতে কর কর্তন (Salary income)", rates:[{r:"গড় হারে"}], note:"নিয়োগকারী কর্মচারীর মোট আনুমানিক করদায়ের ভিত্তিতে গড় হারে মাসিক বেতন হইতে কর কর্তন করিবেন।"},
+      {n:"৮৭", t:"সংসদ সদস্যদের সম্মানী (Honorarium of Members of Parliament)", rates:[{r:"গড় হারে"}]},
+      {n:"৮৮", t:"অংশগ্রহণ তহবিল, কল্যাণ তহবিল ও শ্রমিক কল্যাণ ফাউন্ডেশন তহবিলে প্রদত্ত অর্থ (WPPF / welfare fund / labour welfare foundation)", rates:[{r:"১০%"}]},
+      {n:"৯১", t:"স্পর্শাতীত (অস্পর্শনীয়) সম্পত্তির জন্য পরিশোধিত অর্থ (Payment for intangible property)", rates:[{r:"১০%"}]},
+      {n:"৯২", t:"প্রচার মাধ্যমের বিজ্ঞাপন আয় হইতে কর কর্তন (Advertisement income of media)", rates:[{r:"৫%"}]},
+      {n:"৯৩", t:"অভিনেতা, অভিনেত্রী, প্রযোজক ইত্যাদি ব্যক্তিকে পরিশোধিত অর্থ (Payment to actors, producers etc.)", rates:[{r:"১০%"}]},
+      {n:"৯৪", t:"কমিশন, ডিসকাউন্ট, ফি ইত্যাদি হইতে কর্তন বা উৎসে কর সংগ্রহ (Commission, discount, fees etc.)",
+        rates:[
+          {label:"কমিশন/ডিসকাউন্ট/ফি/প্রণোদনা/কর্মদক্ষতা ভাতা (পরিবেশক বা অন্য ব্যক্তিকে)", r:"১০%"},
+          {label:"পণ্য বিপণন/বাজারজাতকরণে কাউকে প্রদান করলে", r:"১.৫%"},
+          {label:"পরিবেশক/অন্যকে পণ্য বিক্রয়ে (তেল বিপণন ছাড়া); ভিত্তি = বিক্রয়মূল্যের ৫%", r:"৫%"},
+          {label:"সিগারেট প্রস্তুতকারক → ডিস্ট্রিবিউটর/অন্যকে; ভিত্তি = খুচরা ও বিক্রয়মূল্যের পার্থক্য", r:"৩%"}],
+        sroRef:"উৎসে কর বিধিমালা ৩ এর দফা ৩ (SRO ২১০/২০২৬)"},
+      {n:"৯৫", t:"ট্রাভেল এজেন্টের নিকট হইতে কর সংগ্রহ (Collection from travel agents)", rates:[{r:"০.৩%"}]},
+      {n:"৯৬", t:"ঋণপত্রের (LC) কমিশন হিসাবে প্রাপ্ত অর্থ হইতে কর্তন (LC commission)", rates:[{r:"৫%"}]},
+      {n:"৯৭", t:"স্থানীয় ঋণপত্রের (Local LC) বিপরীতে পরিশোধিত অর্থ হইতে কর্তন",
+        rates:[
+          {label:"ব্যবসায়ীর হয়ে ব্যাংক/ফাইন্যান্স কোম্পানি অন্য ব্যক্তিকে পণ্য ক্রয়ে পরিশোধ/ঋণ", r:"৩%"},
+          {label:"ব্যাংক/ফাইন্যান্স কোম্পানি পরিবেশকের হয়ে ইনভয়েস/পণ্য বিক্রয়ে অন্য ব্যক্তিকে", r:"১.৫%"},
+          {label:"ফল, কম্পিউটার ও যন্ত্রাংশ ক্রয়ে খোলা LC/অর্থায়ন", r:"২%"},
+          {label:"তুলা ও সুতা ক্রয়ে", r:"১%"},
+          {label:"কৃষিপণ্য ক্রয়ে", r:"০.৫%"},
+          {label:"এমএস বিলেট ব্যতীত সিমেন্ট/লৌহ/ফেরো অ্যালয় বিক্রয়ে", r:"২%"},
+          {label:"করমুক্ত/হ্রাসকৃত সনদ থাকলে", r:"০%"}]},
+      {n:"৯৯", t:"জীবন বিমা পলিসির প্রিমিয়ামের অতিরিক্ত কোনো পরিশোধ হইতে কর্তন (Life insurance — payment over premium)", rates:[{r:"৫%"}]},
+      {n:"১০০", t:"বিমার কমিশনের অর্থ হইতে কর্তন (Insurance commission)", rates:[{r:"৫%"}]},
+      {n:"১০১", t:"সাধারণ বিমা কোম্পানির জরিপকারীদের (surveyors) ফি ইত্যাদি হইতে কর্তন", rates:[{r:"১৫%"}]},
+      {n:"১০২", t:"সঞ্চয়ী ও স্থায়ী আমানত ইত্যাদির সুদ/মুনাফা হইতে কর্তন (Interest on savings/fixed deposits)",
+        rates:[
+          {label:"ট্রাস্ট, ব্যক্তিসংঘ ও কোম্পানির ক্ষেত্রে", r:"২০%"},
+          {label:"অন্যান্য ক্ষেত্রে", r:"১০%"},
+          {label:"করমুক্ত/হ্রাসকৃত সনদ থাকলে", r:"০%"}]},
+      {n:"১০৪", t:"নিবাসীর সুদ আয় হইতে কর কর্তন (Resident interest income)", rates:[{r:"১০%"}]},
+      {n:"১০৫", t:"সঞ্চয় পত্রের মুনাফা হইতে কর কর্তন (Savings certificate profit)",
+        rates:[
+          {label:"সঞ্চয়পত্রের মুনাফা (যেকোনো তহবিল দ্বারা ক্রয়কৃত হলেও)", r:"১০%"},
+          {label:"পেনশনার সঞ্চয়পত্র — মোট বিনিয়োগ ≤ ৫ লক্ষ টাকা হলে", r:"০%"},
+          {label:"বৈদেশিক মুদ্রা উপার্জনকারীর উন্নয়ন বন্ড / USD-Euro-Pound Premium ও Investment Bond", r:"০%"}]},
+      {n:"১০৬", t:"সিকিউরিটিজের সুদ হইতে উৎসে কর কর্তন (Interest on securities)", rates:[{r:"১০%"}]},
+      {n:"১০৭", t:"বাংলাদেশ ব্যাংক বিলের প্রকৃত মূল্যের ছাড়ের উপর উৎসে কর কর্তন (Bangladesh Bank bills)", rates:[{r:"সর্বোচ্চ হারে"}], note:"বিস্তারিত জানতে ধারা ১০৭ দেখুন।"},
+      {n:"১০৮", t:"আন্তর্জাতিক ফোন কলের জন্য প্রাপ্ত অর্থ হইতে কর্তন (International phone calls / IGW)",
+        rates:[
+          {label:"IGW সেবা প্রদানকারীর হিসাবে ব্যাংকে জমাকৃত মোট অর্থ", r:"১.৫%"},
+          {label:"IGW অপারেটর → BTRC/ICX/ANS বা অন্যের হিসাবে (চুক্তিভুক্ত)", r:"৭.৫%"},
+          {label:"বহির্গামী আন্তর্জাতিক কলে ICX/ANS সেবার বিনিময়ে", r:"৭.৫%"},
+          {label:"NBR সনদ থাকলে", r:"০%"}]},
+      {n:"১০৯", t:"ভাড়া হইতে উৎসে কর কর্তন (Rent — house / hotel / space / plant / water body)",
+        rates:[
+          {label:"নির্দিষ্ট ব্যক্তি ভাড়া প্রদানে: গৃহসম্পত্তি/হোটেল-গেস্ট হাউজ/খালি স্থান বা প্ল্যান্ট-যন্ত্রপাতি/জলাধার", r:"১০%"},
+          {label:"মালিকের আয় করযোগ্য নয়/করমুক্ত ও কমিশনারের সনদ থাকলে", r:"০%"}]},
+      {n:"১১০", t:"কনভেনশন হল, কনফারেন্স সেন্টার ইত্যাদি সেবা হইতে কর্তন (Convention / conference centre)", rates:[{r:"১০%"}]},
+      {n:"১১১", t:"সম্পত্তি অধিগ্রহণের ক্ষতিপূরণ হইতে উৎসে কর কর্তন (Compensation for acquisition of property)",
+        rates:[
+          {label:"সিটি কর্পোরেশন/পৌরসভা/ক্যান্টনমেন্ট বোর্ড এলাকার ভেতরে", r:"৬%"},
+          {label:"উক্ত এলাকার বাইরে", r:"৩%"}]},
+      {n:"১১২", t:"নগদ রপ্তানি ভর্তুকির উপর উৎসে কর কর্তন (Cash export subsidy)", rates:[{r:"৫%"}]},
+      {n:"১১২ক", t:"স্বর্ণ, রৌপ্য, অলংকার, রত্ন-হীরক বা প্লাটিনাম ক্রয়-বিক্রয়ে কর (Gold, silver, jewellery, gems, platinum trade)", rates:[{r:"০.৫%"}]},
+      {n:"১১৪", t:"বিদ্যুৎ ক্রয়ের বিপরীতে কর কর্তন (Purchase of electricity)",
+        rates:[
+          {label:"BPDB/বিতরণকারী/নির্দিষ্ট ব্যক্তি ক্যাপটিভ বিদ্যুৎ উৎপাদনকারী থেকে ক্রয় করলে", r:"৩%"},
+          {label:"বিদ্যুৎ উৎপাদন আয় করমুক্ত ও বোর্ড সনদ থাকলে", r:"০%"}]},
+      {n:"১১৫", t:"রিয়েল এস্টেট ডেভেলপারের নিকট হইতে ভূমির মালিক কর্তৃক প্রাপ্ত আয় হইতে কর্তন (Landowner income from developer)", rates:[{r:"১৫%"}]},
+      {n:"১১৬", t:"বিদেশি ক্রেতার এজেন্টকে প্রদত্ত কমিশন বা পারিশ্রমিক হইতে কর্তন (Commission to foreign buyer agent)", rates:[{r:"৭.৫%"}]},
+      {n:"১১৭", t:"লভ্যাংশ হইতে কর কর্তন (Dividend)",
+        rates:[
+          {label:"শেয়ারহোল্ডার/ইউনিট হোল্ডার স্বাভাবিক ব্যক্তি হলে", r:"১৫%"},
+          {label:"স্বাভাবিক ব্যক্তি ব্যতীত অন্যান্য ব্যক্তি হলে", r:"২০%"}],
+        note:"করঅব্যাহতিপ্রাপ্ত লভ্যাংশ (ষষ্ঠ তফসিলের অংশ-১ এর দফা ৩২ অনুযায়ী) বিতরণে এই ধারার বিধান প্রযোজ্য নহে।"},
+      {n:"১১৮", t:"লটারি ইত্যাদি হইতে প্রাপ্ত আয় হইতে কর কর্তন (Lottery winnings)", rates:[{r:"২৫%"}]},
+      {n:"১২০", t:"আমদানিকারকদের নিকট হইতে কর সংগ্রহ (Collection from importers)", rates:[{r:"বিধি ৮ অনুযায়ী"}], note:"উৎসে কর বিধিমালা ২ এর দফা ২ ও বিধিমালা ৮ অনুযায়ী নির্ধারিত।", sroRef:"উৎসে কর বিধিমালা ৮ (SRO ২১০/২০২৬)"},
+      {n:"১২১", t:"জনশক্তি রপ্তানি হইতে কর সংগ্রহ (Manpower export)",
+        rates:[
+          {label:"সার্ভিস চার্জ/ফি-এর উপর", r:"১০%"},
+          {label:"লাইসেন্স ইস্যু/নবায়ন আবেদনের সাথে", r:"৫০,০০০ টাকা"}],
+        note:"চালানের কপি জমা না দিলে ক্লিয়ারেন্স পাওয়া যাবে না।"},
+      {n:"১২২", t:"ক্লিয়ারিং ও ফরওয়ার্ডিং (C&F) এজেন্টদের নিকট হইতে কর সংগ্রহ", rates:[{r:"১০%"}]},
+      {n:"১২৩", t:"রপ্তানি আয় হইতে কর সংগ্রহ (Export income)",
+        rates:[
+          {label:"ব্যাংক রপ্তানিকারকের হিসাবে রপ্তানি আয় জমার সময় মোট রপ্তানি আয়ের উপর", r:"১%"},
+          {label:"করমুক্ত/হ্রাসকৃত সনদ থাকলে", r:"০%"}]},
+      {n:"১২৪", t:"সেবা, রেভিনিউ শেয়ারিং ইত্যাদি বাবদ বিদেশ হইতে প্রেরিত আয় হইতে উৎসে কর (Income remitted from abroad)",
+        rates:[
+          {label:"বিদেশ থেকে প্রেরিত অর্থের উপর (বাংলাদেশে প্রদত্ত সেবা/অনলাইন প্ল্যাটফর্ম ইত্যাদি)", r:"৫%"},
+          {label:"ফ্রেইট ফরওয়ার্ড/শিপিং এজেন্ট: গ্রস বিলের", r:"১%"},
+          {label:"অথবা কমিশন সুনির্দিষ্ট থাকলে কমিশনের (যেটি বেশি)", r:"১০%"},
+          {label:"ষষ্ঠ তফসিল অংশ-১ দফা ১২/১৭/২১/৩৩ অনুযায়ী বা শিক্ষা-গবেষণা দান হলে", r:"০%"}],
+        note:"বিস্তারিত জানতে ধারা ১২৪ দেখুন।"},
+      {n:"১২৫", t:"সম্পত্তি হস্তান্তর ইত্যাদি হইতে কর সংগ্রহ (Transfer of property)", rates:[{r:"বিধি ৬ অনুযায়ী"}], sroRef:"উৎসে কর বিধিমালা ৬ (SRO ২১০/২০২৬)"},
+      {n:"১২৬", t:"ডেভেলপার বা রিয়েল এস্টেট ডেভেলপারের নিকট হইতে কর সংগ্রহ (Real estate developer)", rates:[{r:"বিধি ৭ অনুযায়ী"}], sroRef:"উৎসে কর বিধিমালা ৭ (SRO ২১০/২০২৬)"},
+      {n:"১২৭", t:"সরকারি স্ট্যাম্প, কোর্ট ফি, কার্টিজ পেপার বাবদ পরিশোধিত কমিশন হইতে কর সংগ্রহ (Govt stamp / court fee / cartridge paper commission)", rates:[{r:"১০%"}]},
+      {n:"১২৮", t:"সম্পত্তির ইজারা হইতে কর সংগ্রহ (Lease of property)",
+        rates:[
+          {label:"কমপক্ষে ১০ বছর মেয়াদে স্থাবর সম্পত্তির ইজারা; নিবন্ধনের সময় ইজারা মূল্যের উপর", r:"৪%"},
+          {label:"করমুক্ত/হ্রাসকৃত সনদ থাকলে", r:"০%"}]},
+      {n:"১২৯", t:"সিগারেট উৎপাদনকারী হইতে কর সংগ্রহ (Cigarette manufacturers)", rates:[{r:"১০%"}]},
+      {n:"১৩০", t:"ইট প্রস্তুতকারকের নিকট হইতে কর সংগ্রহ (Brick manufacturers)",
+        rates:[
+          {label:"মৌসুমী ইটভাটা, আয়তন ≤ ১,০৮,০০০ ঘনফুট", r:"১,০০,০০০ টাকা"},
+          {label:"> ১,০৮,০০০ কিন্তু ≤ ১,২৪,০০০ ঘনফুট", r:"১,৫০,০০০ টাকা"},
+          {label:"> ১,২৪,০০০ ঘনফুট", r:"২,০০,০০০ টাকা"},
+          {label:"অন্যান্য সব ধরনের ইটভাটা", r:"৩,০০,০০০ টাকা"}]},
+      {n:"১৩০ক", t:"খুচরা বিক্রেতার নিকট পণ্য বিক্রয়/সরবরাহে অগ্রিম কর সংগ্রহ (Advance tax on supply to retailers)", rates:[{r:"০.২%"}], note:"উৎপাদনকারী/আমদানিকারক/সরবরাহকারী/পরিবেশক/আড়তদার সংগ্রহে দায়বদ্ধ; সংগৃহীত কর নিবন্ধিত খুচরা বিক্রেতার অগ্রিম আয়কর হিসেবে গণ্য।"},
+      {n:"১৩১", t:"ট্রেড লাইসেন্স প্রদান বা নবায়নের সময় কর সংগ্রহ (Trade license)",
+        rates:[
+          {label:"ঢাকা দক্ষিণ/উত্তর সিটি কর্পোরেশন বা চট্টগ্রাম সিটি কর্পোরেশন", r:"৩,০০০ টাকা"},
+          {label:"অন্যান্য সিটি কর্পোরেশন", r:"২,০০০ টাকা"},
+          {label:"জেলা সদর দপ্তরের পৌরসভা", r:"১,০০০ টাকা"},
+          {label:"অন্যান্য পৌরসভা", r:"৫০০ টাকা"}]},
+      {n:"১৩২", t:"কোনো নিবাসীর জাহাজ ব্যবসা হইতে কর সংগ্রহ (Resident shipping business)",
+        rates:[
+          {label:"বাংলাদেশে প্রবেশ/বিদেশে প্রেরিতব্য মোট মালামালের ভাড়ামূল্যের উপর", r:"৫%"},
+          {label:"পরিবহন দুই বা ততোধিক দেশে সম্পর্কিত হলে ভাড়ামূল্যের উপর", r:"৩%"}]},
+      {n:"১৩৩", t:"প্রকাশ্য নিলামের বিক্রি হইতে কর সংগ্রহ (Public auction sale)",
+        rates:[
+          {label:"সীলমোহরযুক্ত দরপত্রে প্রকাশ্য নিলামে পণ্য/সম্পত্তি বিক্রয়/ইজারা/অধিকার প্রদানে", r:"১০%"},
+          {label:"প্রকাশ্য নিলামে চা বিক্রয়ে", r:"১%"}]},
+      {n:"১৩৪", t:"শেয়ার হস্তান্তর হইতে কর সংগ্রহ (Transfer of shares)", rates:[{r:"১৫%"}]},
+      {n:"১৩৫", t:"সিকিউরিটিজ হস্তান্তর হইতে কর সংগ্রহ (Transfer of securities)", rates:[{r:"১৫%"}]},
+      {n:"১৩৬", t:"স্টক এক্সচেঞ্জের শেয়ারহোল্ডারদের শেয়ার স্থানান্তর হইতে কর সংগ্রহ (Stock exchange shareholders)", rates:[{r:"১৫%"}]},
+      {n:"১৩৭", t:"স্টক এক্সচেঞ্জের সদস্যদের নিকট হইতে কর সংগ্রহ (Stock exchange members)", rates:[{r:"০.০৩%"}]},
+      {n:"১৩৭ক", t:"নিবন্ধিত ক্লাবের সদস্যপদ গ্রহণ, নবায়ন, হস্তান্তর বা পরিবর্তন ফি (Registered club membership)", rates:[{r:"১০%"}], note:"Societies Registration Act, 1860 বা অন্য আইনে নিবন্ধিত ক্লাব কর্তৃক সংগ্রহযোগ্য।"},
+      {n:"১৩৮", t:"বাণিজ্যিকভাবে পরিচালিত মোটরযান হইতে কর সংগ্রহ (Commercial motor vehicles)",
+        rates:[
+          {label:"৫২ আসনের অধিক বাস", r:"২৫,০০০ টাকা"},
+          {label:"৫২ আসন বা তদপেক্ষা কম বাস", r:"২০,০০০ টাকা"},
+          {label:"শীতাতপ নিয়ন্ত্রিত বাস", r:"৫০,০০০ টাকা"},
+          {label:"নন-এসি ডাবল ডেকার বাস", r:"২৫,০০০ টাকা"},
+          {label:"এসি ডাবল ডেকার/স্লিপার বাস", r:"৫০,০০০ টাকা"},
+          {label:"এসি মিনিবাস/কোস্টার", r:"২৫,০০০ টাকা"},
+          {label:"নন-এসি মিনিবাস/কোস্টার", r:"১২,৫০০ টাকা"},
+          {label:"৫–২০ টন ট্রাক/ডাম্পট্রাক/কাভার্ড ভ্যান/প্রাইম মুভার/লরি/ট্যাংক লরি", r:"৩০,০০০ টাকা"},
+          {label:"২০ টন বা তদূর্ধ্ব ট্রাক/প্রাইম মুভার/ট্যাংক লরি ইত্যাদি", r:"৫০,০০০ টাকা"},
+          {label:"১.৫–৫ টন ট্রাক/কাভার্ড ভ্যান/কার্গো ভ্যান/লরি/ট্যাংক লরি", r:"১৫,০০০ টাকা"},
+          {label:"১.৫ টন পর্যন্ত ট্রাক/লরি/ট্যাংক লরি", r:"৭,৫০০ টাকা"},
+          {label:"পিকআপ ভ্যান/হিউম্যান হলার/ট্রাক্টর/ম্যাক্সি/অটোরিকশা", r:"৭,৫০০ টাকা"},
+          {label:"ক্রেন/এক্সকাভেটর/ডোজার/রোলার/কংক্রিট মিক্সারসহ হেভি/স্পেশাল ভেহিকেল", r:"৫০,০০০ টাকা"},
+          {label:"শীতাতপ নিয়ন্ত্রিত ট্যাক্সিক্যাব", r:"১৫,০০০ টাকা"},
+          {label:"নন-এসি ট্যাক্সিক্যাব", r:"৭,৫০০ টাকা"}],
+        note:"নিবন্ধন বা ফিটনেস নবায়নের সময় অগ্রিম কর; পরবর্তী বছরের অগ্রিম কর ৩০ জুন বা তৎপূর্বে পরিশোধযোগ্য। সরকার/সরকারি প্রকল্প/কূটনৈতিক মিশন/জাতিসংঘ ইত্যাদি অব্যাহতিপ্রাপ্ত।"},
+      {n:"১৩৮ক", t:"বেসামরিক আকাশযান হইতে অগ্রিম কর সংগ্রহ (Civil aircraft — helicopter / charter)", rates:[{r:"১০,০০,০০০ টাকা"}], note:"হেলিকপ্টার বা চার্টারের নিবন্ধন বা ফিটনেস নবায়নে।"},
+      {n:"১৩৯", t:"নৌযান পরিচালনা হইতে কর সংগ্রহ (Inland vessel operation)",
+        rates:[
+          {label:"যাত্রী পরিবহন: দিবাকালীন যাত্রী ধারণক্ষমতার ভিত্তিতে যাত্রী প্রতি", r:"১২৫ টাকা"},
+          {label:"মালামাল পরিবহন (কার্গো/কন্টেইনার/কোস্টার): গ্রস টনেজ প্রতি", r:"১৭০ টাকা"},
+          {label:"ডাম্পবার্জ: গ্রস টনেজ প্রতি", r:"১২৫ টাকা"}]}
+    ]
+  },
+
+  s119: {
+    name: "ধারা ১১৯ — অনিবাসীর আয় হইতে কর কর্তন/সংগ্রহ",
+    rule: "৫", dhara: "১১৯",
+    defaultBasis: null,
+    notes: [
+      "<b>SRO সূত্র:</b> উৎসে কর বিধিমালা ৫ (এস.আর.ও নং ২১০-আইন/আয়কর-১/২০২৬, ০৮ জুন ২০২৬)।",
+      "<b>শেয়ার হস্তান্তরে মূলধনী আয়:</b> কোনো কোম্পানির শেয়ার হস্তান্তরে মূলধনী আয় উদ্ভূত হলে, সেই আয়ের উপর কর পরিশোধ না হওয়া পর্যন্ত দায়ী ব্যক্তি/কর্তৃপক্ষ হস্তান্তর কার্যকর করিবেন না।",
+      "<b>সনদভিত্তিক অব্যাহতি (উপ-বিধি ২):</b> বোর্ড প্রয়োজনীয় কাগজপত্রসহ আবেদন প্রাপ্তির ৩০ দিনের মধ্যে সন্তুষ্ট হয়ে সনদ দিতে পারে যে অনিবাসীকে কর দিতে হবে না/হ্রাসকৃত হারে — তখন কর্তন ব্যতিরেকে বা হ্রাসকৃত হারে পরিশোধ করা যাবে।",
+      "<b>যেসব পরিশোধে বিধি ৫ প্রযোজ্য নয় (উপ-বিধি ৩):</b> বিদেশি রাষ্ট্রের সরকারি কর্তৃপক্ষে পরিশোধ; আন্তর্জাতিক স্বীকৃত Professional Body-র Subscription Fee; Liaison/Branch Office ব্যয়; বাংলাদেশ ব্যাংকের Guidelines অনুযায়ী AD যাচাইকৃত টিউশন ফি; আন্তর্জাতিক বিপণন ও পণ্য উন্নয়ন ব্যয়; যেকোনো নিরাপত্তা জামানত; আরবিট্রেশন ফি; হজ্ব বাবদ প্রেরিত অর্থ; প্রায়োরিটি (Priority) Pass বাবদ অর্থ।"
+    ],
+    items: [
+      {n:"১", t:"উপদেষ্টা বা পরামর্শক (Advisory / consultancy)", rates:[{label:"স্বাভাবিক ব্যক্তি", r:"২০%"},{label:"অন্যান্য ব্যক্তি", r:"১০%"}]},
+      {n:"২", t:"প্রি-শিপমেন্ট পরিদর্শন (Pre-shipment inspection)", rates:[{label:"বিলের উপর", r:"২০%"}]},
+      {n:"৩", t:"পেশাদার সেবা ফি (Professional service)", rates:[{label:"স্বাভাবিক ব্যক্তি", r:"২০%"},{label:"অন্যান্য ব্যক্তি", r:"১০%"}]},
+      {n:"৪", t:"কারিগরি সেবা/সহায়তা ফি (Technical service / know-how / assistance)", rates:[{label:"স্বাভাবিক ব্যক্তি", r:"২০%"},{label:"অন্যান্য ব্যক্তি", r:"১০%"}]},
+      {n:"৫", t:"আর্কিটেকচার, ইন্টেরিয়র/ল্যান্ডস্কেপ ডিজাইন, ফ্যাশন/প্রসেস ডিজাইন (Architecture, interior, landscape, fashion, process design)", rates:[{label:"বিলের উপর", r:"১৫%"}]},
+      {n:"৬", t:"সার্টিফিকেশন, রেটিং ইত্যাদি ফি (Certification, rating fees)", rates:[{r:"১৫%"}]},
+      {n:"৭", t:"স্যাটেলাইট, এয়ারটাইম বা ফ্রিকোয়েন্সি ব্যবহার ভাড়া / চ্যানেল সম্প্রচার ভাড়া (Satellite / airtime / frequency / channel broadcast)", rates:[{label:"বিলের উপর", r:"২০%"}]},
+      {n:"৮", t:"আইন সেবা ফি (Legal service)", rates:[{r:"২০%"}]},
+      {n:"৯", t:"ইভেন্ট ম্যানেজমেন্টসহ ব্যবস্থাপনা সেবা (Management service incl. event management)", rates:[{label:"বিলের উপর", r:"২০%"}]},
+      {n:"১০", t:"কমিশন (Commission)", rates:[{label:"কমিশনের উপর", r:"১৫%"}]},
+      {n:"১১", t:"রয়্যালটি, লাইসেন্স ফি বা স্পর্শাতীত সম্পত্তির জন্য পরিশোধিত অর্থ (Royalty, license fee, intangible property)", rates:[{r:"২০%"}]},
+      {n:"১২", t:"সুদ পরিশোধ (Interest payment)", rates:[{label:"সুদের উপর", r:"১০%"}]},
+      {n:"১৩", t:"বিজ্ঞাপন সম্প্রচার (Advertisement broadcasting)", rates:[{label:"বিলের উপর", r:"১৫%"}]},
+      {n:"১৪", t:"বিজ্ঞাপন নির্মাণ ও ডিজিটাল মার্কেটিং (Advertisement making & digital marketing)", rates:[{label:"বিলের উপর", r:"১০%"}]},
+      {n:"১৫", t:"ধারা ২৫৯ ও ২৬০ ব্যতীত নৌ বা বিমান পরিবহন (Sea / air transport, except sec 259 & 260)", rates:[{label:"বিলের উপর", r:"৬%"}]},
+      {n:"১৬", t:"কন্ট্রাক্টর/সাব-কন্ট্রাক্টর কর্তৃক ম্যানুফ্যাকচারিং, প্রসেস, পূর্তকাজ, নির্মাণ, প্রকৌশল ইত্যাদি (Contractor works)", rates:[{label:"বিলের উপর", r:"৬%"}]},
+      {n:"১৭", t:"পণ্য সরবরাহ (Supply of goods)", rates:[{label:"বিলের উপর", r:"৬%"}]},
+      {n:"১৮", t:"মূলধন মুনাফা (Capital gains)", rates:[{r:"১৫%"}]},
+      {n:"১৯", t:"বীমা প্রিমিয়াম ফি (Insurance premium fee)", rates:[{r:"৫%"}]},
+      {n:"২০", t:"যন্ত্রপাতি, সরঞ্জাম ইত্যাদি ভাড়া (Rental of machinery / equipment)", rates:[{label:"বিলের উপর", r:"৭.৫%"}]},
+      {n:"২১", t:"লভ্যাংশ (Dividend)", rates:[{label:"কোম্পানি/তহবিল/ট্রাস্ট কর্তৃক গৃহীত হলে", r:"২০%"},{label:"অন্যান্য ব্যক্তি কর্তৃক গৃহীত হলে", r:"২৫%"}]},
+      {n:"২২", t:"শিল্পী, গায়ক বা খেলোয়াড় কর্তৃক গৃহীত অর্থ (Artist, singer, player)", rates:[{r:"৩০%"}]},
+      {n:"২৩", t:"বেতন বা পারিশ্রমিক (Salary or remuneration)", rates:[{label:"বিলের উপর", r:"৩০%"}]},
+      {n:"২৪", t:"পেট্রোলিয়াম অপারেশনের অনুসন্ধান বা ড্রিলিং (Petroleum exploration / drilling)", rates:[{label:"বিলের উপর", r:"৫.২৫%"}]},
+      {n:"২৫", t:"কয়লা, তেল বা গ্যাস অনুসন্ধানের জন্য সমীক্ষা (Survey for coal / oil / gas exploration)", rates:[{label:"বিলের উপর", r:"১৫%"}]},
+      {n:"২৬", t:"জেনারেল ইন্স্যুরেন্স কোম্পানির সার্ভেয়ার ফি (General insurance surveyor fee)", rates:[{r:"৫.২৫%"}]},
+      {n:"২৭", t:"তেল/গ্যাসক্ষেত্র ও এর রপ্তানি পয়েন্টের মধ্যে সংযোগ স্থাপনের সেবা (Oil/gas field to export point connection)", rates:[{label:"বিলের উপর", r:"৫.২৫%"}]},
+      {n:"২৮", t:"ব্যান্ডউইথ বাবদ পরিশোধ (Bandwidth payment)", rates:[{r:"১০%"}]},
+      {n:"২৯", t:"কুরিয়ার সার্ভিস (Courier service)", rates:[{label:"বিলের উপর", r:"১০%"}]},
+      {n:"৩০", t:"অন্য কোনো পরিশোধ (Any other payment)", rates:[{r:"২০%"}]}
+    ]
   }
 };
 
@@ -509,11 +721,24 @@ function highlight(text, q){
   return esc(text.slice(0,i))+"<mark>"+esc(text.slice(i,i+q.length))+"</mark>"+esc(text.slice(i+q.length));
 }
 
+function isPct(r){ return /%/.test(r); }
 function rateChip(item){
-  if(item.rates.length===1 && !item.rates[0].label) return `<span class="rate-chip">${item.rates[0].r}</span>`;
-  if(item.rates.length===1) return `<span class="rate-chip">${item.rates[0].r}</span>`;
-  const lo = item.rates.map(x=>x.r);
-  return `<span class="rate-chip">${lo.join(" / ")}</span>`;
+  const rs = item.rates;
+  if(rs.length===1){
+    return `<span class="rate-chip${isPct(rs[0].r)?"":" amt"}">${rs[0].r}</span>`;
+  }
+  const allPct = rs.every(x=>isPct(x.r));
+  if(allPct && rs.length<=3){
+    return `<span class="rate-chip">${rs.map(x=>x.r).join(" / ")}</span>`;
+  }
+  return `<span class="rate-chip multi">একাধিক হার</span>`;
+}
+function getRef(sec, it){
+  const sro = "এস.আর.ও নং ২১০-আইন/আয়কর-১/২০২৬";
+  if(sec.refType==="section"){
+    return `সূত্র: <b>ধারা ${it.n}</b>, আয়কর আইন ২০২৩${it.sroRef?` · ${it.sroRef}`:""}`;
+  }
+  return `সূত্র: <b>${sro}</b> · বিধি ${sec.rule} · সারণী ক্রমিক ${it.n} · ধারা ${sec.dhara}, আয়কর আইন ২০২৩`;
 }
 
 function renderNotes(){
@@ -526,7 +751,7 @@ function render(q=""){
   const query = q.trim();
   const items = sec.items.filter(it=>{
     if(!query) return true;
-    const hay = (it.t+" "+(it.full||"")).toLowerCase();
+    const hay = (it.t+" "+(it.full||"")+" "+(it.n||"")+" "+(it.note||"")).toLowerCase();
     return hay.includes(query.toLowerCase());
   });
 
@@ -544,7 +769,7 @@ function render(q=""){
     const basis = sec.defaultBasis;
     const stamps = it.rates.map(rt=>`
       <div class="stamp">
-        <div class="stamp-ring"><span class="pct">${rt.r}</span></div>
+        <div class="stamp-ring${isPct(rt.r)?"":" txt"}"><span class="pct">${rt.r}</span></div>
         ${rt.label?`<div class="stamp-label">${rt.label}</div>`
                   :(basis?`<div class="stamp-label">${basis}</div>`:"")}
       </div>`).join("");
@@ -552,9 +777,11 @@ function render(q=""){
     const itemNote = it.note ? `<div class="item-note">${it.note}</div>` : "";
     const ref = `<div class="item-ref">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        <span>সূত্র: <b>এস.আর.ও নং ২১০-আইন/আয়কর-১/২০২৬</b> · বিধি ${sec.rule} · সারণী ক্রমিক ${it.n} · ধারা ${sec.dhara}, আয়কর আইন ২০২৩</span>
+        <span>${getRef(sec, it)}</span>
       </div>`;
-    const peek = it.rates.length>1 ? `${toBn(it.rates.length)} টি ভিত্তি/শ্রেণি` : (basis||"");
+    let peek;
+    if(sec.refType==="section"){ peek = `ধারা ${it.n}`; }
+    else { peek = it.rates.length>1 ? `${toBn(it.rates.length)} টি ভিত্তি/শ্রেণি` : (basis||""); }
     return `
     <div class="item" data-n="${it.n}">
       <button class="item-head" aria-expanded="false">
